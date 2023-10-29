@@ -1,8 +1,10 @@
 import Sequelize from "sequelize";// importando
-const sequelize = new Sequelize("test", "root", "root1", {
+const sequelize = new Sequelize("test", "root", "root1", {//new em js?
     host: "localhost",
     dialect: "mysql"// ou 'postgres', 'sqlite', etc., dependendo do banco de dados que você está usando
 });
+
+//fazer um exemplo de logica de banco de dados<__________________-__--
 
 //criando models
  //nome do modelo sempre no plural
@@ -37,7 +39,7 @@ Postagem.findOrCreate({
         console.log("Postagem já existe", postagem.titulo);
     }
 }).catch((error) => {
-    console.error("Erro ao encontra postagem", error);
+    console.error("Erro ao encontrar postagem", error);
 });
 const Usuario = sequelize.define("usuarios", {
     nome: {
