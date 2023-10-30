@@ -1,4 +1,4 @@
-const http = require('http');
+import http from 'http'; 
 const fs = require('fs');
 
 // Importa os módulos 'http' e 'fs' para criar um servidor web e ler arquivos.
