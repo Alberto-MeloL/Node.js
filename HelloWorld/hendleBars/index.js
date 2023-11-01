@@ -2,7 +2,6 @@
 /*express.json() para analisar dados JSON e express.urlencoded() para analisar dados de formulário, como você já está fazendo.*, porem agura tem suporte nativo*/
 import express from 'express';
 import expressHandlebars from 'express-handlebars';
-import Sequelize from 'sequelize';
 
 //Inicializando
 const handlebars = expressHandlebars.create({ defaultLayout: 'main' });//deixa explicíto ()
@@ -16,12 +15,6 @@ app.set('view engine', 'handlebars');
 //Configurando express
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json);
-
-//Conexão com o banco de dados MySQL
-const sequelize = new Sequelize('test', 'root', 'root1', {
-    host: 'localhost',
-    dialect: 'mysql',
-});
 
 //Rotas
 app.get('/cad', (req, res) => {
