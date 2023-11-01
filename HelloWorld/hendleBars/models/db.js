@@ -13,6 +13,14 @@ export default {
 }
 
 
+sequelize.authenticate()
+.then(() => {
+    console.log("OK!")
+})
+.catch((error) => {
+    console.error("--->", error)
+})
+
 // var db = {};
 // db.sequelize = sequelize;
 // db.Sequelize = Sequelize;

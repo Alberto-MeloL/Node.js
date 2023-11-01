@@ -14,4 +14,4 @@ const Post = db.sequelize.define('postagens', {
 });
 
 // Post.sync({force: true});
-module.exports = Post;//Fica acessível para outros arquivos
+export default Post;//Fica acessível para outros arquivos
