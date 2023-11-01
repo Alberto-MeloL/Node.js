@@ -3,7 +3,7 @@
 import express from 'express';
 import expressHandlebars from 'express-handlebars';
 import db from './models/db';
-import Post from '../models/Post';
+import Post from './models/Post';
 
 const sequelize = db.sequelize;
 //Inicializando
@@ -34,11 +34,11 @@ Post.create({
     idade: req.body.idade
 })
 .then(() => {
-    console.log("Tudo certo!")
+    res.send("Tudo certo!")
 })
-.catch((error =>{
-    console.error("--->",error);
-}));
+.catch(error =>{
+    res.send(error);
+});
 });
 
 // sequelize.authenticate()
