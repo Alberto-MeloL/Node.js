@@ -1,5 +1,4 @@
-import Sequelize from 'sequelize';
-
+const Sequelize = require('sequelize')
 //Conexão com o banco de dados MySQL
 const sequelize = new Sequelize('postapp', 'root', 'root1', {
     host: 'localhost',
@@ -7,7 +6,7 @@ const sequelize = new Sequelize('postapp', 'root', 'root1', {
 });
  
 //As exportações só pdem ser feitas após ter as váriaveis definida no código
-export default {
+module.exports = {
     sequelize: sequelize,
     Sequelize: Sequelize
 }

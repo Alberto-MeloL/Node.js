@@ -1,11 +1,12 @@
 // import bodyParser from 'body-parser'; DESCONTINUADO
 /*express.json() para analisar dados JSON e express.urlencoded() para analisar dados de formulário, como você já está fazendo.*, porem agura tem suporte nativo*/
-import express from 'express';
-import expressHandlebars from 'express-handlebars';
-import db from './models/db';
-import Post from './models/Post';
+// import path from 'path';
+// const __dirname = path.resolve();
 
-const sequelize = db.sequelize;
+const express = require('express')
+const expressHandlebars = require('express-handlebars');
+const db = require('./models/db.cjs');
+const Post = require('./models/Post.cjs');
 //Inicializando
 const handlebars = expressHandlebars.create({ defaultLayout: 'main' });//deixa explicíto ()
 const app = express();
@@ -30,14 +31,13 @@ app.get('/cad', (req, res) => {
 app.post('/postagens', (req, res) => {
 Post.create({
     titulo: req.body.titulo,
-    conteudo: req.body.conteudo,
-    idade: req.body.idade
+    conteudo: req.body.conteudo
 })
 .then(() => {
     res.send("Tudo certo!")
 })
 .catch(error =>{
-    res.send(error);
+    res.send("erro" + error);
 });
 });
 
@@ -48,6 +48,6 @@ Post.create({
 // .catch((error) => {
 //     console.error("Erro:", error)//, trata o erro diretament e + converte como string e trata como mensagem
 // })
-app.listen(3000, () => {
+app.listen(5040, () => {
     console.log("Servidor rodando.")
 });
