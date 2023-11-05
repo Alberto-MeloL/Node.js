@@ -1,0 +1,8 @@
+<h1>Lista de postagens</h1>
+
+    {{!-- Estrutura do handlebars --}}
+{{#each posts}} {{!-- Abre--}}
+<small>{{createdAt}}</small> {{!--Exibe a data de criação--}}
+<h1>{{titulo}}</h1>
+<p>{{conteudo}}</p>
+{{/each}} {{!--Fecha--}}

@@ -7,11 +7,16 @@ const express = require('express')
 const expressHandlebars = require('express-handlebars');
 const db = require('./models/db.cjs');
 const Post = require('./models/Post.cjs');
-//Inicializando
-const handlebars = expressHandlebars.create({ defaultLayout: 'main' });//deixa explicíto ()
+
+    //Inicializando
+const handlebars = expressHandlebars.create({ defaultLayout: 'main',
+runtimeOptions:{
+    allowProtoPropertiesByDefault: true,
+    allowProtoMethodsByDefault: true,
+} });//deixa explicíto ()
 const app = express();
 
-//Configuração
+    //Configuração
 //Template Engine
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -20,7 +25,15 @@ app.set('view engine', 'handlebars');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//Rotas
+    //Rotas
+app.get('/', (req, res) => {
+    Post.findAll({order: [['id', 'DESC'/*DESC descendente, ASC ascendente*/]]}).then((posts) =>{//findAll() recupera a tabela
+        console.log(posts)
+        res.render('home', {/*posso passar qualquer tipo de dado para o hdb*/posts: posts});
+    })//vai retornar tudo do banco de dados(tabela 'postapp')
+
+});
+
 app.get('/cad', (req, res) => {
     res.render('formulario');//renderizar o arquivo formulario
 });
@@ -34,7 +47,7 @@ Post.create({
     conteudo: req.body.conteudo
 })
 .then(() => {
-    res.send("Tudo certo!")
+res.redirect('/');//redirecionado    
 })
 .catch(error =>{
     res.send("erro" + error);
