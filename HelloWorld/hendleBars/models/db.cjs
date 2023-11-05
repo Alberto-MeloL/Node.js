@@ -14,10 +14,10 @@ module.exports = {
 
 sequelize.authenticate()
 .then(() => {
-    console.log("OK!")
+    console.log("OK, conexão estabelecida.")
 })
 .catch((error) => {
-    console.error("--->", error)
+    console.error("Erro" + error)
 })
 
 // var db = {};

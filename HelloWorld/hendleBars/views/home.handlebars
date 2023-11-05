@@ -1,8 +1,12 @@
-<h1>Lista de postagens</h1>
+<link rel="stylesheet" href="styles/style.css">
+    <h1>Lista de postagens</h1>
 
     {{!-- Estrutura do handlebars --}}
 {{#each posts}} {{!-- Abre--}}
 <small>{{createdAt}}</small> {{!--Exibe a data de criação--}}
+<div class="post">
 <h1>{{titulo}}</h1>
 <p>{{conteudo}}</p>
+<button class="deletar">Deletar</button>
+</div>
 {{/each}} {{!--Fecha--}}

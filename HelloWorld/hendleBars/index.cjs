@@ -1,5 +1,5 @@
 // import bodyParser from 'body-parser'; DESCONTINUADO
-/*express.json() para analisar dados JSON e express.urlencoded() para analisar dados de formulário, como você já está fazendo.*, porem agura tem suporte nativo*/
+/*express.json() para analisar dados JSON e express.urlencoded() para analisar dados de formulário, como você já está fazendo.*, porem agora tem suporte nativo*/
 // import path from 'path';
 // const __dirname = path.resolve();
 
@@ -24,11 +24,14 @@ app.set('view engine', 'handlebars');
 //Configurando express
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('styles'));
 
     //Rotas
 app.get('/', (req, res) => {
+    // res.setHeader('Content-Type', 'text/css'); o endpoint não pode ser deifinido no arquivo raiz
+
     Post.findAll({order: [['id', 'DESC'/*DESC descendente, ASC ascendente*/]]}).then((posts) =>{//findAll() recupera a tabela
-        console.log(posts)
+        // console.log(posts)
         res.render('home', {/*posso passar qualquer tipo de dado para o hdb*/posts: posts});
     })//vai retornar tudo do banco de dados(tabela 'postapp')
 
